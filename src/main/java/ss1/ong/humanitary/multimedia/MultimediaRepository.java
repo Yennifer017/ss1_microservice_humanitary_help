@@ -1,7 +1,8 @@
 package ss1.ong.humanitary.multimedia;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import ss1.ong.humanitary.example.Model;
+import java.util.List;
 
-public interface ModelRepository extends JpaRepository<Model, Integer> {
+public interface MultimediaRepository extends JpaRepository<Multimedia, Integer> {
+    public List<Multimedia> findByEventId(Integer eventId);
 }
