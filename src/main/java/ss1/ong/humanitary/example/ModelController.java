@@ -7,9 +7,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import ss1.ong.humanitary.auth.users.AppUser;
-import ss1.ong.humanitary.auth.users.dto.request.CreateUserDTO;
-import ss1.ong.humanitary.auth.users.dto.response.UserDTO;
 import ss1.ong.humanitary.common.exceptions.NotFoundException;
 
 /**

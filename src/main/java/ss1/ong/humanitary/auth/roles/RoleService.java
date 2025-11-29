@@ -1,4 +1,4 @@
-package ss1.ong.humanitary.auth.roles.services;
+package ss1.ong.humanitary.auth.roles;
 
 import java.util.Arrays;
 import java.util.List;

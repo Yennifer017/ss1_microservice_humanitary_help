@@ -6,11 +6,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicUpdate;
-import ss1.ong.humanitary.auth.users.enums.RolesEnum;
-import ss1.ong.humanitary.auth.users.enums.StatusUserEnum;
 import ss1.ong.humanitary.common.models.entities.Auditor;
-
-import java.util.List;
 
 /**
  * Usuario interno de la aplicación
@@ -30,30 +26,13 @@ public class AppUser extends Auditor {
     @Column(nullable = false, unique = true, length = 20)
     private String username;
 
-    @Column(nullable = false, length = 50)
-    private String email;
-
-    @Column(nullable = false, length = 50)
-    private String name;
-
-    @Column(nullable = false, length = 50)
-    private String phoneNumber;
+    @Column(nullable = true, length = 150)
+    private String address;
 
     @Column(nullable = true, length = 50)
-    private String lastname;
-
-    @Column(nullable = false, length = 255)
-    private String passwordHash;
-
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false, length = 20)
-    private RolesEnum role;
-
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false, length = 30)
-    private StatusUserEnum status;
+    private String phoneNumber;
 
     @Column(nullable = false)
-    private Boolean mfaActivated;
+    private Integer bloodType;
 
 }

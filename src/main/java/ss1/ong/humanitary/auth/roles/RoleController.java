@@ -13,7 +13,6 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import ss1.ong.humanitary.auth.roles.models.dto.response.RoleDTO;
-import ss1.ong.humanitary.auth.roles.services.RoleService;
 import ss1.ong.humanitary.auth.users.enums.RolesEnum;
 
 @RestController

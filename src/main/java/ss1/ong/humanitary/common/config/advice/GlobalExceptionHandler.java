@@ -9,10 +9,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import ss1.ong.humanitary.common.exceptions.CustomRuntimeException;
-import ss1.ong.humanitary.common.exceptions.DuplicateResourceException;
-import ss1.ong.humanitary.common.exceptions.InvalidTokenException;
-import ss1.ong.humanitary.common.exceptions.NotFoundException;
+import ss1.ong.humanitary.common.exceptions.*;
 import ss1.ong.humanitary.common.models.dto.response.ErrorDTO;
 import ss1.ong.humanitary.common.utils.MethodArgumentErrorExtractor;
 
@@ -100,6 +97,12 @@ public class GlobalExceptionHandler {
                         Ocurrió un error inesperado al procesar la información.
                         Por favor, contacta al equipo de soporte e indica el siguiente código de error: """
                         + ex.getCode());
+    }
+
+    @ExceptionHandler(CustomException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErrorDTO handleCustomException(CustomException ex) {
+        return new ErrorDTO(ex.getMessage());
     }
 
     @ExceptionHandler(Exception.class)

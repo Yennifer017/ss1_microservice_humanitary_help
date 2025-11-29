@@ -1,9 +1,7 @@
 package ss1.ong.humanitary.auth.users;
 
 import org.mapstruct.*;
-import ss1.ong.humanitary.auth.users.dto.request.CreateUserByAdminDTO;
-import ss1.ong.humanitary.auth.users.dto.request.CreateUserDTO;
-import ss1.ong.humanitary.auth.users.dto.request.UpdateUserByAdminDTO;
+import ss1.ong.humanitary.auth.users.dto.request.UpdateUserDTO;
 import ss1.ong.humanitary.auth.users.dto.response.UserDTO;
 
 import java.util.List;
@@ -13,14 +11,15 @@ import java.util.List;
         unmappedTargetPolicy = ReportingPolicy.IGNORE
 )
 public interface AppUserMapper {
-    public AppUser createUserDtoToAppUser(CreateUserDTO createUserDTO);
     public UserDTO appUserToUserDto(AppUser appUser);
     public List<UserDTO> appUsersToUserDtos(List<AppUser> appUsers);
 
-    public AppUser createUserByAdminDtoToAppUser(CreateUserByAdminDTO createUserByAdminDTO);
-
-    // update parcial
+    /** update parcial
+     *
+     * @param dto
+     * @param entity
+     */
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    void updateAppUserFromDto(UpdateUserByAdminDTO dto, @MappingTarget AppUser entity);
+    void updateAppUserFromDto(UpdateUserDTO dto, @MappingTarget AppUser entity);
 
 }
