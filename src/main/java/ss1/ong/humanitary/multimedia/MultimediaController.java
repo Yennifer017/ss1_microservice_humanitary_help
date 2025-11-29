@@ -2,7 +2,6 @@ package ss1.ong.humanitary.multimedia;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -12,6 +11,7 @@ import ss1.ong.humanitary.common.exceptions.NotFoundException;
 import ss1.ong.humanitary.multimedia.dto.response.MultimediaDTO;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Controlador REST para la gestión de usuarios
@@ -50,32 +50,31 @@ public class MultimediaController {
     /**
      * Obtiene todos los recursos multimedia de un evento
      **/
-    @Operation(summary = "example",
-            description = "example",
+    @Operation(summary = "Obtiene todos los recursos multimedia de un evento",
+            description = "Obtiene todos los recursos multimedia de un evento",
             responses = {
                     @ApiResponse(responseCode = "200", description = "Exitoso"),
                     @ApiResponse(responseCode = "400", description = "Datos de entrada inválidos")
             })
-    @GetMapping("/{example}")
+    @GetMapping("/{eventId}")
     @ResponseStatus(HttpStatus.OK)
-    @PreAuthorize("hasRole('ADMIN')")
-    public void example(@PathVariable String example) throws NotFoundException {
-
+    public List<MultimediaDTO> getFromEvent(@PathVariable Integer eventId) {
+        return multimediaService.getAllFromEvent(eventId);
     }
 
     /**
-     * Obtiene todos los recursos multimedia de un evento
+     * Elimina un recurso multimedia
      **/
-    @Operation(summary = "example",
-            description = "example",
+    @Operation(summary = "Elimina un recurso multimedia",
+            description = "Elimina un recurso multimedia",
             responses = {
                     @ApiResponse(responseCode = "200", description = "Exitoso"),
                     @ApiResponse(responseCode = "400", description = "Datos de entrada inválidos")
             })
-    @GetMapping("/{example}")
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     @PreAuthorize("hasRole('ADMIN')")
-    public void example(@PathVariable String example) throws NotFoundException {
-
+    public void delete(@PathVariable Integer id) throws NotFoundException {
+        multimediaService.delete(id);
     }
 }
