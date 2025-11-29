@@ -5,6 +5,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ss1.ong.humanitary.auth.users.dto.request.UpdateUserDTO;
 import ss1.ong.humanitary.common.exceptions.NotFoundException;
 
 import java.util.Optional;
@@ -38,6 +39,12 @@ public class AppUserService {
 
     public AppUser getProfile() throws NotFoundException {
         return this.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName(), true);
+    }
+
+    public AppUser updateUser(UpdateUserDTO updateUserDTO) throws NotFoundException {
+        AppUser appUser = getProfile();
+        appUserMapper.updateAppUserFromDto(updateUserDTO, appUser);
+        return appUserRepository.save(appUser);
     }
 
 }

@@ -49,7 +49,7 @@ import org.springframework.util.AntPathMatcher;
 @AllArgsConstructor
 public enum PublicEndpointsEnum {
 
-    AUTH_RECOVERY_PASSWORD(HttpMethod.POST, "/api/user/password-recovery"),
+    /*AUTH_RECOVERY_PASSWORD(HttpMethod.POST, "/api/user/password-recovery"),
     AUTH_LOGIN(HttpMethod.POST, "/api/login"),
     AUTH_LOGIN_MFA(HttpMethod.POST, "/api/login/mfa"),
     SEND_CODE(HttpMethod.POST, "/api/send-code"),
@@ -57,6 +57,9 @@ public enum PublicEndpointsEnum {
     SIGN_IN_CLIENT(HttpMethod.POST, "/api/client/register"),
 
     SEARCH_FOR_DELIVERY(HttpMethod.GET, "/api/delivery/find/**"),
+    */
+
+    GET_ALL_CATASTROPHE(HttpMethod.GET, "/api/catastrophe"),
 
     // Rutas publicas de Activity
     SWAGGER_UI(null, "/swagger-ui/**"),
