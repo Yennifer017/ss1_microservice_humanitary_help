@@ -59,7 +59,8 @@ public enum PublicEndpointsEnum {
     SEARCH_FOR_DELIVERY(HttpMethod.GET, "/api/delivery/find/**"),
     */
 
-    GET_ALL_CATASTROPHE(HttpMethod.GET, "/api/catastrophe"),
+    ALL_CATASTROPHES(HttpMethod.GET, "/api/catastrophe"),
+    ALL_HELPERS(HttpMethod.GET, "/api/helper/**"),
 
     // Rutas publicas de Activity
     SWAGGER_UI(null, "/swagger-ui/**"),
