@@ -39,4 +39,9 @@ public class HelperService {
         return helperMapper.helperToHelperDto(helpers);
     }
 
+    public Helper getById(Integer id) throws NotFoundException {
+        return this.helperRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("No se encontro una ayuda"));
+    }
+
 }
