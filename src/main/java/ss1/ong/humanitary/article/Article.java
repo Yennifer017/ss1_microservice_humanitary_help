@@ -1,4 +1,4 @@
-package ss1.ong.humanitary.buy;
+package ss1.ong.humanitary.article;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,9 +9,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicUpdate;
-import ss1.ong.humanitary.auth.users.AppUser;
 import ss1.ong.humanitary.common.models.entities.Auditor;
-import ss1.ong.humanitary.helper.Helper;
+import ss1.ong.humanitary.event.Event;
 
 /**
  * Usuario interno de la aplicación
@@ -26,20 +25,15 @@ import ss1.ong.humanitary.helper.Helper;
 @Data
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class Buy extends Auditor {
+public class Article extends Auditor {
+
+    @Column(nullable = false, length = 50)
+    private String title;
+
+    @Column(nullable = false, length = 2000)
+    private String content;
 
     @ManyToOne
     @JoinColumn(nullable = false)
-    private AppUser appUser;
-
-    @ManyToOne
-    @JoinColumn(nullable = false)
-    private Helper helper;
-
-    @Column(nullable = false)
-    private Integer quantity;
-
-    @Column(nullable = false)
-    private Double totalCost;
-
+    private Event event;
 }
