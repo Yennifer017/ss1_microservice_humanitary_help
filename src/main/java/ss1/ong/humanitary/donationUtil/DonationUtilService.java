@@ -24,8 +24,9 @@ public class DonationUtilService {
     private final DonationUtilMapper donationUtilMapper;
     private final DonationUtilRepository donationUtilRepository;
 
-    public DonationUtil create(CreateDonationUtilDTO createDonationUtilDTO){
+    public DonationUtil create(CreateDonationUtilDTO createDonationUtilDTO, Boolean overwrite){
         DonationUtil donationUtil = donationUtilMapper.createDonationUtilDtoToDonationUtil(createDonationUtilDTO);
+        if(overwrite || donationUtil.getType() == null) donationUtil.setType(DonationUtilTypeEnum.THING);
         return donationUtilRepository.save(donationUtil);
     }
 

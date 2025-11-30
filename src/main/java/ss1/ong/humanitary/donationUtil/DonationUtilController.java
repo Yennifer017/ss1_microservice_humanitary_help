@@ -43,7 +43,9 @@ public class DonationUtilController {
     @ResponseStatus(HttpStatus.OK)
     @PreAuthorize("hasRole('ADMIN')")
     public DonationUtilDTO create(@RequestBody @Valid CreateDonationUtilDTO createDonationUtilDTO) {
-        return this.donationUtilMapper.donationUtilToDonationUtilDto(donationUtilService.create(createDonationUtilDTO));
+        return this.donationUtilMapper.donationUtilToDonationUtilDto(
+                donationUtilService.create(createDonationUtilDTO, true)
+        );
     }
 
     /**

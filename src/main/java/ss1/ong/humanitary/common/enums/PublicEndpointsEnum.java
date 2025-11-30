@@ -64,6 +64,7 @@ public enum PublicEndpointsEnum {
     ALL_EVENTS(HttpMethod.GET, "/api/event"),
     ALL_ARTICLES(HttpMethod.GET, "/api/article/**"),
     ALL_MULTIMEDIA(HttpMethod.GET, "/api/multimedia/**"),
+    ALL_PROFESSIONS(HttpMethod.GET, "/api/profession/**"),
 
     // Rutas publicas de Activity
     SWAGGER_UI(null, "/swagger-ui/**"),
