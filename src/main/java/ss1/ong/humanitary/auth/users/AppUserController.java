@@ -43,10 +43,10 @@ public class AppUserController {
     }
 
     /**
-     * Actualiza el perfil para un usuario extendido
+     * Actualiza el perfil extendido
      * */
-    @Operation(summary = "Actualiza el perfil para un usuario extendido",
-            description = "Actualiza el perfil para un usuario extendido",
+    @Operation(summary = "Actualiza el perfil extendido para un usuario",
+            description = "Actualiza el perfil extendido para un usuario",
             responses = {
                     @ApiResponse(responseCode = "201", description = "Exito"),
                     @ApiResponse(responseCode = "400", description = "Datos de entrada inválidos")

@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicUpdate;
+import ss1.ong.humanitary.auth.users.enums.GenreEnum;
 import ss1.ong.humanitary.common.models.entities.Auditor;
 
 /**
@@ -34,5 +35,17 @@ public class AppUser extends Auditor {
 
     @Column(nullable = false)
     private Integer bloodType;
+    
+    @Column(nullable = false, length = 50)
+    private String name;
 
+    @Column(nullable = false, length = 50)
+    private String lastname;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private GenreEnum genre;
+
+    @Column(nullable = false, length = 50)
+    private String email;
 }
