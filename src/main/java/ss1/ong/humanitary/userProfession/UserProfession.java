@@ -1,4 +1,4 @@
-package ss1.ong.humanitary.requeriment;
+package ss1.ong.humanitary.userProfession;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,9 +9,9 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicUpdate;
+import ss1.ong.humanitary.auth.users.AppUser;
 import ss1.ong.humanitary.common.models.entities.Auditor;
-import ss1.ong.humanitary.donationUtil.DonationUtil;
-import ss1.ong.humanitary.event.Event;
+import ss1.ong.humanitary.profession.Profession;
 
 /**
  * Usuario interno de la aplicación
@@ -26,17 +26,17 @@ import ss1.ong.humanitary.event.Event;
 @Data
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class Requirement extends Auditor {
+public class UserProfession extends Auditor {
 
     @ManyToOne
-    @JoinColumn(nullable = false)
-    private Event event;
+    @JoinColumn
+    private AppUser appUser;
 
     @ManyToOne
-    @JoinColumn(nullable = false)
-    private DonationUtil donationUtil;
+    @JoinColumn
+    private Profession profession;
 
-    @Column(nullable = false)
-    private Integer quantity;
+    @Column(nullable = false, length = 100)
+    private String degreeUrl;
 
 }

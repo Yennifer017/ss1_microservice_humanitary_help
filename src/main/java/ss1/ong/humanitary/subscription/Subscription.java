@@ -1,4 +1,4 @@
-package ss1.ong.humanitary.requeriment;
+package ss1.ong.humanitary.subscription;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,8 +9,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicUpdate;
+import ss1.ong.humanitary.auth.users.AppUser;
 import ss1.ong.humanitary.common.models.entities.Auditor;
-import ss1.ong.humanitary.donationUtil.DonationUtil;
 import ss1.ong.humanitary.event.Event;
 
 /**
@@ -26,17 +26,14 @@ import ss1.ong.humanitary.event.Event;
 @Data
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class Requirement extends Auditor {
+public class Subscription extends Auditor {
+
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private AppUser appUser;
 
     @ManyToOne
     @JoinColumn(nullable = false)
     private Event event;
-
-    @ManyToOne
-    @JoinColumn(nullable = false)
-    private DonationUtil donationUtil;
-
-    @Column(nullable = false)
-    private Integer quantity;
 
 }

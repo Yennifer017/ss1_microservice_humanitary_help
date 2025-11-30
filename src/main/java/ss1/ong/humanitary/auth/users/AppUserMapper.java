@@ -2,6 +2,7 @@ package ss1.ong.humanitary.auth.users;
 
 import org.mapstruct.*;
 import ss1.ong.humanitary.auth.users.dto.request.UpdateUserDTO;
+import ss1.ong.humanitary.auth.users.dto.response.SimpleUserDTO;
 import ss1.ong.humanitary.auth.users.dto.response.UserDTO;
 
 import java.util.List;
@@ -11,6 +12,9 @@ import java.util.List;
         unmappedTargetPolicy = ReportingPolicy.IGNORE
 )
 public interface AppUserMapper {
+    public SimpleUserDTO appUserToSimpleUserDto(AppUser appUser);
+    public List<SimpleUserDTO> appUserToSimpleUserDto(List<AppUser> appUsers);
+
     public UserDTO appUserToUserDto(AppUser appUser);
     public List<UserDTO> appUsersToUserDtos(List<AppUser> appUsers);
 
