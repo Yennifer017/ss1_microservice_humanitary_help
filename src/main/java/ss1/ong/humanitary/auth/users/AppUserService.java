@@ -24,27 +24,32 @@ public class AppUserService {
     private final AppUserRepository appUserRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public AppUser getUserByUsername(String username, boolean mustDuplicate) throws NotFoundException {
+    public AppUser getUserByUsername(String username) throws NotFoundException {
         Optional<AppUser> appUserOptional = appUserRepository.findUserByUsername(username);
         if(appUserOptional.isPresent()){
             return appUserOptional.get();
-        } else if(mustDuplicate){
-            AppUser appUser = new AppUser();
-            appUser.setUsername(username);
-            appUser.setBloodType(1);
-            return appUserRepository.save(appUser);
         }
-        throw new NotFoundException("No se encontró un usuario con el username proporcionado");
+        //TODO conectar el otro microservicio
+        AppUser appUser = new AppUser();
+        appUser.setUsername(username);
+        appUser.setBloodType(1);
+        return appUserRepository.save(appUser);
     }
 
     public AppUser getProfile() throws NotFoundException {
-        return this.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName(), true);
+        return this.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
     }
 
     public AppUser updateUser(UpdateUserDTO updateUserDTO) throws NotFoundException {
         AppUser appUser = getProfile();
         appUserMapper.updateAppUserFromDto(updateUserDTO, appUser);
         return appUserRepository.save(appUser);
+    }
+
+    public AppUser getUserById(Integer id){
+        //TODO conectar el otro microservicio
+        AppUser appUser = null;
+        return appUser;
     }
 
 }

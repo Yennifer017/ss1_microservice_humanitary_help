@@ -61,4 +61,14 @@ public class UserProfessionService {
         return this.userProfessionMapper.userProfessionToOwnedProfessionDTO(userProfessions);
     }
 
+    public boolean isPsychoProfessional(Integer appUserId) {
+        List<UserProfession> userProfessions = this.userProfessionRepository.findByAppUserId(appUserId);
+        if(userProfessions.isEmpty()) return false;
+
+        for (UserProfession userProfession : userProfessions) {
+            if(userProfession.getProfession().getForPsycho() == true) return true;
+        }
+        return false;
+    }
+
 }

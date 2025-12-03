@@ -1,9 +1,6 @@
-package ss1.ong.humanitary.multimedia;
+package ss1.ong.humanitary.psychoHelp;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -11,7 +8,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicUpdate;
 import ss1.ong.humanitary.auth.users.AppUser;
 import ss1.ong.humanitary.common.models.entities.Auditor;
-import ss1.ong.humanitary.event.Event;
+import ss1.ong.humanitary.psychoHelp.enums.PsychoHelpStatusEnum;
 
 /**
  * Usuario interno de la aplicación
@@ -26,17 +23,23 @@ import ss1.ong.humanitary.event.Event;
 @Data
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class Multimedia extends Auditor {
+public class PsychoHelp extends Auditor {
 
-    @Column(nullable = true, length = 50)
-    private String url;
+    @Column(nullable = true, length = 200)
+    private String notes;
+
+    @Column(nullable = false)
+    private Integer progress;
 
     @ManyToOne
-    @JoinColumn(nullable = false)
-    private Event event;
+    private AppUser patient;
 
     @ManyToOne
-    @JoinColumn(nullable = false)
-    private AppUser appUser;
+    private AppUser currentPsycho;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private PsychoHelpStatusEnum status;
+
 
 }

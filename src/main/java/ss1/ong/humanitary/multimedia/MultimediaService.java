@@ -4,6 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
+import ss1.ong.humanitary.auth.users.AppUser;
+import ss1.ong.humanitary.auth.users.AppUserService;
 import ss1.ong.humanitary.common.exceptions.NotFoundException;
 import ss1.ong.humanitary.common.utils.FilesService;
 import ss1.ong.humanitary.event.Event;
@@ -29,11 +31,13 @@ public class MultimediaService {
 
     private final EventService eventService;
     private final FilesService filesService;
+    private final AppUserService appUserService;
 
     public Multimedia save(MultipartFile file, Integer eventId) throws NotFoundException, IOException {
+        AppUser appUser = appUserService.getProfile();
         Event event = eventService.getEventById(eventId);
         String url = filesService.uploadFile(file, "event_multimedia");
-        Multimedia multimedia = new Multimedia(url, event);
+        Multimedia multimedia = new Multimedia(url, event, appUser);
         return multimediaRepository.save(multimedia);
     }
 
