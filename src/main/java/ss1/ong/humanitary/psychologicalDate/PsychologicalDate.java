@@ -49,4 +49,7 @@ public class PsychologicalDate extends Auditor {
     @JoinColumn
     private AppUser psycho;
 
+    @Column(nullable = true, length = 255)
+    private String notes;
+
 }

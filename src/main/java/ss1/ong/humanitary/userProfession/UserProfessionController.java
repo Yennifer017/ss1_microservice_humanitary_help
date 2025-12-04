@@ -11,6 +11,7 @@ import ss1.ong.humanitary.common.exceptions.NotFoundException;
 import ss1.ong.humanitary.userProfession.dto.response.OwnedProfessionDTO;
 import ss1.ong.humanitary.userProfession.dto.response.UserProfessionDTO;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -43,7 +44,7 @@ public class UserProfessionController {
     public UserProfessionDTO create(
             @PathVariable Integer professionId,
             @RequestPart("file") MultipartFile file
-    ) {
+    ) throws NotFoundException, IOException {
         return this.userProfessionMapper
                 .userProfessionToUserProfessionDTO(userProfessionService.registerProfession(file, professionId));
     }
