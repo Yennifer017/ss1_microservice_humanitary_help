@@ -20,7 +20,7 @@ import java.util.List;
  * @since 2025-28-08
  */
 @RestController
-@RequestMapping("/api/event")
+@RequestMapping("/api/hh/event")
 @RequiredArgsConstructor
 public class EventController {
 

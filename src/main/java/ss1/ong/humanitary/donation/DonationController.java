@@ -21,7 +21,7 @@ import java.util.List;
  * @since 2025-28-08
  */
 @RestController
-@RequestMapping("/api/donation")
+@RequestMapping("/api/hh/donation")
 @RequiredArgsConstructor
 public class DonationController {
 
@@ -64,10 +64,10 @@ public class DonationController {
     }
 
     /**
-     * example
+     * Obtener todas las donaciones de un evento en particular
      **/
-    @Operation(summary = "example",
-            description = "example",
+    @Operation(summary = "Obtener todas las donaciones de un evento en particular",
+            description = "Obtener todas las donaciones de un evento en particular",
             responses = {
                     @ApiResponse(responseCode = "200", description = "Exitoso"),
                     @ApiResponse(responseCode = "400", description = "Datos de entrada inválidos")

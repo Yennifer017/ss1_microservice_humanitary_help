@@ -22,7 +22,7 @@ import java.util.List;
  * @since 2025-28-08
  */
 @RestController
-@RequestMapping("/api/userProfession")
+@RequestMapping("/api/hh/userProfession")
 @RequiredArgsConstructor
 public class UserProfessionController {
 

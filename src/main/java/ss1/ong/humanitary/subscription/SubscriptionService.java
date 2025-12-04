@@ -50,7 +50,7 @@ public class SubscriptionService {
         AppUser appUser = appUserService.getProfile();
         Subscription subscription = subscriptionRepository.findByAppUserIdAndEventId(appUser.getId(), eventId)
                 .orElseThrow(() -> new NotFoundException("No se encontro una suscripcion relacionada al usuario"));
-        subscriptionRepository.deleteById(subscription);
+        subscriptionRepository.deleteById(subscription.getId());
     }
 
 }

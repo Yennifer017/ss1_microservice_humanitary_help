@@ -2,12 +2,15 @@ package ss1.ong.humanitary.subscription;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import ss1.ong.humanitary.common.exceptions.NotFoundException;
+import ss1.ong.humanitary.subscription.dto.response.EventSubscriptionDTO;
+import ss1.ong.humanitary.subscription.dto.response.OwnedSubscriptionDTO;
+
+import java.util.List;
 
 /**
  * Controlador REST para la gestión de usuarios
@@ -17,7 +20,7 @@ import ss1.ong.humanitary.common.exceptions.NotFoundException;
  * @since 2025-28-08
  */
 @RestController
-@RequestMapping("/api/subscription")
+@RequestMapping("/api/hh/subscription")
 @RequiredArgsConstructor
 public class SubscriptionController {
 
@@ -36,8 +39,8 @@ public class SubscriptionController {
     @PostMapping("/{eventId}")
     @ResponseStatus(HttpStatus.OK)
     @PreAuthorize("hasAnyRole('CLIENT', 'JOURNALIST')")
-    public void create(@PathVariable String eventId) {
-
+    public OwnedSubscriptionDTO create(@PathVariable Integer eventId) throws NotFoundException {
+        return this.subscriptionMapper.subscriptionToOwnedSubscriptionDto(subscriptionService.create(eventId));
     }
 
     /**
@@ -52,12 +55,28 @@ public class SubscriptionController {
     @GetMapping("/byEvent/{eventId}")
     @ResponseStatus(HttpStatus.OK)
     @PreAuthorize("hasRole('ADMIN')")
-    public void example(@PathVariable String example) throws NotFoundException {
-
+    public List<EventSubscriptionDTO> getByEventId(@PathVariable Integer eventId) throws NotFoundException {
+        return this.subscriptionService.getByEventId(eventId);
     }
 
     /**
-     * example
+     * Obtener las suscripciones de un usuario especifico
+     **/
+    @Operation(summary = "Obtener las suscripciones de un usuario especifico",
+            description = "Obtener las suscripciones de un usuario especifico",
+            responses = {
+                    @ApiResponse(responseCode = "200", description = "Exitoso"),
+                    @ApiResponse(responseCode = "400", description = "Datos de entrada inválidos")
+            })
+    @GetMapping("/owned")
+    @ResponseStatus(HttpStatus.OK)
+    @PreAuthorize("hasRole('ADMIN')")
+    public List<OwnedSubscriptionDTO> getOwned() throws NotFoundException {
+        return this.subscriptionService.getOwned();
+    }
+
+    /**
+     * Eliminar suscripcion
      **/
     @Operation(summary = "example",
             description = "example",
@@ -65,26 +84,10 @@ public class SubscriptionController {
                     @ApiResponse(responseCode = "200", description = "Exitoso"),
                     @ApiResponse(responseCode = "400", description = "Datos de entrada inválidos")
             })
-    @GetMapping("/{example}")
+    @DeleteMapping("/{eventId}")
     @ResponseStatus(HttpStatus.OK)
     @PreAuthorize("hasRole('ADMIN')")
-    public void example(@PathVariable String example) throws NotFoundException {
-
-    }
-
-    /**
-     * example
-     **/
-    @Operation(summary = "example",
-            description = "example",
-            responses = {
-                    @ApiResponse(responseCode = "200", description = "Exitoso"),
-                    @ApiResponse(responseCode = "400", description = "Datos de entrada inválidos")
-            })
-    @GetMapping("/{example}")
-    @ResponseStatus(HttpStatus.OK)
-    @PreAuthorize("hasRole('ADMIN')")
-    public void example(@PathVariable String example) throws NotFoundException {
-
+    public void deleteById(@PathVariable Integer eventId) throws NotFoundException {
+        this.subscriptionService.deleteSubscription(eventId);
     }
 }

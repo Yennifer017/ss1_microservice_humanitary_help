@@ -16,7 +16,7 @@ import ss1.ong.humanitary.auth.roles.models.dto.response.RoleDTO;
 import ss1.ong.humanitary.auth.users.enums.RolesEnum;
 
 @RestController
-@RequestMapping("/api/v1/roles")
+@RequestMapping("/api/hh/roles")
 @RequiredArgsConstructor
 public class RoleController {
 

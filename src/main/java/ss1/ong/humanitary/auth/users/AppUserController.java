@@ -19,7 +19,7 @@ import ss1.ong.humanitary.common.exceptions.NotFoundException;
  * @since 2025-28-08
  */
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/api/hh/user")
 @RequiredArgsConstructor
 public class AppUserController {
 

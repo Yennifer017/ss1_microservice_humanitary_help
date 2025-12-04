@@ -21,7 +21,7 @@ import java.util.List;
  * @since 2025-28-08
  */
 @RestController
-@RequestMapping("/api/requirement")
+@RequestMapping("/api/hh/requirement")
 @RequiredArgsConstructor
 public class RequirementController {
 

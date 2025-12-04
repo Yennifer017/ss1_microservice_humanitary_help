@@ -23,7 +23,7 @@ import java.util.List;
  * @since 2025-28-08
  */
 @RestController
-@RequestMapping("/api/donationUtil")
+@RequestMapping("/api/hh/donationUtil")
 @RequiredArgsConstructor
 public class DonationUtilController {
 

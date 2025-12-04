@@ -24,7 +24,7 @@ import java.util.List;
  * @since 2025-28-08
  */
 @RestController
-@RequestMapping("/api/model")
+@RequestMapping("/api/hh/psychoHelp")
 @RequiredArgsConstructor
 public class PsychoHelpController {
 

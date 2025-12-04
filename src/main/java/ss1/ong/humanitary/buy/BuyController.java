@@ -22,7 +22,7 @@ import java.util.List;
  * @since 2025-28-08
  */
 @RestController
-@RequestMapping("/api/buy")
+@RequestMapping("/api/hh/buy")
 @RequiredArgsConstructor
 public class BuyController {
 
