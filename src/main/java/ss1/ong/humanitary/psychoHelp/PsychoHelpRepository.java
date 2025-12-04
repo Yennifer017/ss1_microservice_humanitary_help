@@ -1,7 +1,6 @@
 package ss1.ong.humanitary.psychoHelp;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import ss1.ong.humanitary.example.Model;
 import ss1.ong.humanitary.psychoHelp.enums.PsychoHelpStatusEnum;
 
 import java.util.List;
