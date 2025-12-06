@@ -21,16 +21,19 @@ public class SwaggerConfig {
     @Bean
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
-                .info(new io.swagger.v3.oas.models.info.Info().title("SIE")
+                .info(new io.swagger.v3.oas.models.info.Info().title("Humanitary microservice")
                         .version("1.0")
-                        .description("Documentación de la API para el proyecto SIE"));
+                        .description("""
+    Documentación de la API para el proyecto SS1 ong, el microservicio de ayuda humanitaria"""
+                        ));
     }
 
     @Bean
     public GroupedOpenApi publicApi() {
         return GroupedOpenApi.builder()
                 .group("public") // grupo de endpoints públicos
-                .pathsToMatch("/api/**") // se define el patrón de las rutas a documentar
+                .pathsToMatch("/api/hh/**","/**") // se define el patrón de las rutas a documentar
+                //.pathsToExclude("/api/hh/swagger*/**", "/api/hh/v3/api-docs*/**")
                 .build();
     }
 }
