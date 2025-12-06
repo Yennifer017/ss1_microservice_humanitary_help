@@ -59,17 +59,17 @@ public enum PublicEndpointsEnum {
     SEARCH_FOR_DELIVERY(HttpMethod.GET, "/api/delivery/find/**"),
     */
 
-    ALL_CATASTROPHES(HttpMethod.GET, "/api/catastrophe"),
-    ALL_HELPERS(HttpMethod.GET, "/api/helper/**"),
-    ALL_EVENTS(HttpMethod.GET, "/api/event"),
-    ALL_ARTICLES(HttpMethod.GET, "/api/article/**"),
-    ALL_MULTIMEDIA(HttpMethod.GET, "/api/multimedia/**"),
-    ALL_PROFESSIONS(HttpMethod.GET, "/api/profession/**"),
+    ALL_CATASTROPHES(HttpMethod.GET, "/api/hh/catastrophe"),
+    ALL_HELPERS(HttpMethod.GET, "/api/hh/helper/**"),
+    ALL_EVENTS(HttpMethod.GET, "/api/hh/event"),
+    ALL_ARTICLES(HttpMethod.GET, "/api/hh/article/**"),
+    ALL_MULTIMEDIA(HttpMethod.GET, "/api/hh/multimedia/**"),
+    ALL_PROFESSIONS(HttpMethod.GET, "/api/hh/profession/**"),
 
     // Rutas publicas de Activity
-    SWAGGER_UI(null, "/swagger-ui/**"),
-    API_DOCS(null, "/v3/api-docs/**"),
-
+    SWAGGER_UI(null, "/api/hh/swagger-ui/**"),
+    API_DOCS(null, "/api/hh/v3/api-docs/**"),
+    SWAGGER(null, "/api/hh/swagger")
     ;
 
     private final HttpMethod method;
