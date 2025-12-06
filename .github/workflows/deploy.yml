@@ -33,15 +33,21 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build Docker image
+      - name: Export IMAGE var
+        id: image
         run: |
           OWNER=$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
-          IMAGE=ghcr.io/${OWNER}/ayuda-backend:latest
+          GIT_SHA=$(echo "${{ github.sha }}" | head -c 7)
+          IMAGE=ghcr.io/${OWNER}/ayuda-backend:${GIT_SHA}
+          echo "IMAGE=$IMAGE" >> $GITHUB_ENV
+          echo "IMAGE=${IMAGE}" >> $GITHUB_OUTPUT
+
+      - name: Build Docker image
+        run: |
           docker build -t $IMAGE .
-          echo "IMAGE_NAME=$IMAGE" >> $GITHUB_ENV
 
       - name: Push Docker image
-        run: docker push $IMAGE_NAME
+        run: docker push ${{ steps.image.outputs.IMAGE }}
 
       #       DESPLIEGUE DENTRO DE LA VM POR SSH
       - name: Deploy to k3s via SSH
@@ -51,14 +57,14 @@ jobs:
           username: ${{ secrets.VM_USER }}
           key: ${{ secrets.VM_SSH_KEY }}
           script: |
+            IMAGE="${{ steps.image.outputs.IMAGE }}"
             echo "Usando kubeconfig interno del servidor"
-            export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
+            export KUBECONFIG=/home/azureuser/.kube/config
 
-            echo "Actualizando Deployment ayuda-humanitaria"
-            OWNER=$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
-            IMAGE_TAG=ghcr.io/${OWNER}/ayuda-backend:latest
+            echo "Actualizando Deployment ayuda-humanitaria de $IMAGE"
 
-            kubectl set image deployment/ayuda-humanitaria ayuda-humanitaria=$IMAGE_TAG -n app-prod || true
+            kubectl set image deployment/ayuda-humanitaria ayuda-humanitaria=$IMAGE -n app-prod 
+            kubectl patch deployment ayuda-humanitaria -n app-prod -p '{"spec":{"template":{"metadata":{"annotations":{"date":"'"$(date +%s)"'"}}}}}'
 
             echo "pull image and start pods"
             kubectl -n app-prod rollout restart deployment/ayuda-humanitaria
