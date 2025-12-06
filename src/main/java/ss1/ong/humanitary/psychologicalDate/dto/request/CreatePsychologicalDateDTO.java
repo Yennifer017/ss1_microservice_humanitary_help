@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 public class CreatePsychologicalDateDTO {
     @NotNull(message = "Debe especificarse un ")
     LocalDateTime init;
-    LocalDateTime end;
+    LocalDateTime endDateTime;
     Integer psychoHelpId;
     String notes;
 }

@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 @Value
 public class SimplePsychologicalDateDTO {
     LocalDateTime init;
-    LocalDateTime end;
+    LocalDateTime endDateTime;
     String status;
     String urlEvidence;
 }

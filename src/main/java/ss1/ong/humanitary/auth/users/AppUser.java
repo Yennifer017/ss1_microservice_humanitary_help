@@ -7,6 +7,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicUpdate;
 import ss1.ong.humanitary.auth.users.enums.GenreEnum;
+import ss1.ong.humanitary.auth.users.enums.RolesEnum;
 import ss1.ong.humanitary.common.models.entities.Auditor;
 
 /**
@@ -48,4 +49,8 @@ public class AppUser extends Auditor {
 
     @Column(nullable = false, length = 50)
     private String email;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private RolesEnum role;
 }

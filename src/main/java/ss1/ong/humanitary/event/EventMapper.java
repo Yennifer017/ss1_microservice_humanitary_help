@@ -3,6 +3,7 @@ package ss1.ong.humanitary.event;
 import org.mapstruct.CollectionMappingStrategy;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
+import ss1.ong.humanitary.catastrophe.CatastropheMapper;
 import ss1.ong.humanitary.event.dto.request.CreateEventDTO;
 import ss1.ong.humanitary.event.dto.response.EventDTO;
 
@@ -10,7 +11,8 @@ import java.util.List;
 
 @Mapper(componentModel = "spring",
         collectionMappingStrategy = CollectionMappingStrategy.SETTER_PREFERRED,
-        unmappedTargetPolicy = ReportingPolicy.IGNORE
+        unmappedTargetPolicy = ReportingPolicy.IGNORE,
+        uses = CatastropheMapper.class
 )
 public interface EventMapper {
     public Event createEventDtoToEvent(CreateEventDTO createEventDTO);

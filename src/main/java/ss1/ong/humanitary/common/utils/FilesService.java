@@ -2,11 +2,6 @@ package ss1.ong.humanitary.common.utils;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-import software.amazon.awssdk.auth.credentials.AwsBasicCredentials;
-import software.amazon.awssdk.auth.credentials.StaticCredentialsProvider;
-import software.amazon.awssdk.regions.Region;
-import software.amazon.awssdk.services.s3.S3Client;
-import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 import ss1.ong.humanitary.common.config.S3Config;
 
 import java.io.IOException;
@@ -16,11 +11,11 @@ import java.util.UUID;
 @Service
 public class FilesService {
 
-    private final S3Config s3Config;
-    private final S3Client s3Client;
+   /* private final S3Config s3Config;
+    private final S3Client s3Client;*/
 
     public FilesService(S3Config s3Config) {
-        this.s3Config = s3Config;
+        /*this.s3Config = s3Config;
         this.s3Client = S3Client.builder()
                 .region(Region.of(s3Config.getRegion()))
                 .credentialsProvider(
@@ -28,14 +23,14 @@ public class FilesService {
                                 AwsBasicCredentials.create(s3Config.getAccessKey(), s3Config.getSecretKey())
                         )
                 )
-                .build();
+                .build();*/
     }
 
     /**
      * Sube un archivo al servidor de G3 y devuelve el path
      * */
     public String uploadFile(MultipartFile file, String folder) throws IOException {
-        String extension = "";
+        /*String extension = "";
         String originalName = file.getOriginalFilename();
         if (originalName != null && originalName.contains(".")) {
             extension = originalName.substring(originalName.lastIndexOf("."));
@@ -55,7 +50,8 @@ public class FilesService {
         );
 
         // URL pública
-        return "https://" + s3Config.getBucketName() + ".s3.amazonaws.com/" + key;
+        return "https://" + s3Config.getBucketName() + ".s3.amazonaws.com/" + key;*/
+        return "pendiente";
     }
 
 }

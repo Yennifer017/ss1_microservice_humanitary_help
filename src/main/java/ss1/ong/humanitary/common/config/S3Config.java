@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class S3Config {
 
-    @Value("${aws.s3.bucket-name}")
+    /*@Value("${aws.s3.bucket-name}")
     private String bucketName;
 
     @Value("${aws.region}")
@@ -25,6 +25,6 @@ public class S3Config {
     String accessKey;
 
     @Value("${aws.secretKey}")
-    String secretKey;
+    String secretKey;*/
 
 }

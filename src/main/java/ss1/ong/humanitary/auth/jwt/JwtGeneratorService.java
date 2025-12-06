@@ -63,7 +63,6 @@ public class JwtGeneratorService {
         claims.put(CLAIM_USER_ID, appUser.getId());
         claims.put(CLAIM_USER_USERNAME, appUser.getUsername());
         claims.put(CLAIM_NAME_USER_ROLE, appUser.getRole().name());
-        claims.put(CLAIM_NAME_USER_STATUS, appUser.getStatus().name());
 
         long validityMillis = Duration.ofMillis(parseDuration(jwtConfig.getJwtExpiresIn())).toMillis();
         // Generar el token

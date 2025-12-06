@@ -32,7 +32,7 @@ public class PsychologicalDate extends Auditor {
     private LocalDateTime init;
 
     @Column(nullable = false)
-    private LocalDateTime end;
+    private LocalDateTime endDateTime;
 
     @Column(nullable = true, length = 100)
     private String urlEvidence;

@@ -12,7 +12,7 @@ public class UpdatePsychologicalDateDTO {
     @NotNull(message = "Debe especificarse un id de una cita de ayuda psicologica")
     Integer id;
     LocalDateTime init;
-    LocalDateTime end;
+    LocalDateTime endDateTime;
     PsychoDateStatusEnum status;
     String notes;
 }

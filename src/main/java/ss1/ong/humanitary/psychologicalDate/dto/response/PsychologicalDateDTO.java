@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 public class PsychologicalDateDTO {
     LocalDateTime init;
-    LocalDateTime end;
+    LocalDateTime endDateTime;
     PsychoHelpDTO psychoHelp;
     SimpleUserDTO psycho;
     String status;
