@@ -1,7 +1,9 @@
 package ss1.ong.humanitary.auth.jwt;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
@@ -164,7 +166,13 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
                 userDetails, token, userDetails.getAuthorities());
 
-        authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+        //authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+
+        Map<String, Object> authDetails = new HashMap<>();
+        authDetails.put("jwt", token);
+        authDetails.put("ip", request.getRemoteAddr());
+        authenticationToken.setDetails(authDetails);
+
         SecurityContextHolder.getContext().setAuthentication(authenticationToken);
     }
 }

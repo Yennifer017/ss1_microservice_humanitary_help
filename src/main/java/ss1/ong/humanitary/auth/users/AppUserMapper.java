@@ -1,6 +1,7 @@
 package ss1.ong.humanitary.auth.users;
 
 import org.mapstruct.*;
+import ss1.ong.humanitary.auth.users.dto.microservice.MicroserviceUserDTO;
 import ss1.ong.humanitary.auth.users.dto.request.UpdateUserDTO;
 import ss1.ong.humanitary.auth.users.dto.response.SimpleUserDTO;
 import ss1.ong.humanitary.auth.users.dto.response.UserDTO;
@@ -17,6 +18,8 @@ public interface AppUserMapper {
 
     public UserDTO appUserToUserDto(AppUser appUser);
     public List<UserDTO> appUsersToUserDtos(List<AppUser> appUsers);
+
+    public AppUser microserviceUserDtoToAppUser(MicroserviceUserDTO microserviceUserDTO);
 
     /** update parcial
      *
