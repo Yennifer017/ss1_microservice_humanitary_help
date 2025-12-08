@@ -43,4 +43,9 @@ public class EventService {
                 .orElseThrow(()-> new NotFoundException("No se encontro un evento"));
     }
 
+    public List<EventDTO> getByCatastropheId(Integer id){
+        List<Event> events = this.eventRepository.findByCatastropheId(id);
+        return this.eventMapper.eventToEventDto(events);
+    }
+
 }

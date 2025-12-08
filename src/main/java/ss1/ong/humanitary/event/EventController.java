@@ -57,4 +57,19 @@ public class EventController {
     public List<EventDTO> getAll() throws NotFoundException {
         return eventService.getAllEvents();
     }
+
+    /**
+     * Obtener los eventos de una catastrofe
+     **/
+    @Operation(summary = "Obtener los eventos de una catastrofe",
+            description = "Obtener los eventos de una catastrofe",
+            responses = {
+                    @ApiResponse(responseCode = "200", description = "Exitoso"),
+                    @ApiResponse(responseCode = "400", description = "Datos de entrada inválidos")
+            })
+    @GetMapping("/{catastropheId}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<EventDTO> getByCatastropheId(@PathVariable Integer catastropheId) throws NotFoundException {
+        return eventService.getByCatastropheId(catastropheId);
+    }
 }

@@ -99,15 +99,29 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
      */
     private boolean isPublicEndpoint(HttpServletRequest request) {
         String requestPath = request.getRequestURI();
+        String requestMethod = request.getMethod(); // <-- ESTA LÍNEA
         AntPathMatcher matcher = new AntPathMatcher();
 
-        for (PublicEndpointsEnum endpointsEnum : PublicEndpointsEnum.values()) {
-            if (matcher.match(endpointsEnum.getPath(), requestPath)) {
-                return true;
+        for (PublicEndpointsEnum endpoint : PublicEndpointsEnum.values()) {
+
+            // 1. Validar path
+            if (!matcher.match(endpoint.getPath(), requestPath)) {
+                continue;
+            }
+
+            // 2. Validar método HTTP
+            if (endpoint.getMethod() == null) {
+                return true; // Permitir todos los métodos
+            }
+
+            if (endpoint.getMethod().matches(requestMethod)) {
+                return true; // Solo permite si coincide el método
             }
         }
+
         return false;
     }
+
 
     /**
      * Extrae el token JWT del encabezado `Authorization` de la solicitud.
