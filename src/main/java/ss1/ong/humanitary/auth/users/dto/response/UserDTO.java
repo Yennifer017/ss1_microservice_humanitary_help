@@ -4,7 +4,7 @@ import lombok.Value;
 
 @Value
 public class UserDTO {
-    String id;
+    Integer id;
     String username;
     String address;
     String phoneNumber;

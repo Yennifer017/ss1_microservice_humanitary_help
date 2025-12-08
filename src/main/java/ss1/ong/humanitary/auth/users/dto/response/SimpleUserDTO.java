@@ -4,7 +4,7 @@ import lombok.Value;
 
 @Value
 public class SimpleUserDTO {
-    String id;
+    Integer id;
     String username;
     String name;
     String lastname;
