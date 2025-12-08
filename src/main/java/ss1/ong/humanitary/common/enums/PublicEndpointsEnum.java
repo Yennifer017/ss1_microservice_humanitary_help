@@ -59,9 +59,9 @@ public enum PublicEndpointsEnum {
     SEARCH_FOR_DELIVERY(HttpMethod.GET, "/api/delivery/find/**"),
     */
 
-    ALL_CATASTROPHES(HttpMethod.GET, "/api/hh/catastrophe"),
+    ALL_CATASTROPHES(HttpMethod.GET, "/api/hh/catastrophe/**"),
     ALL_HELPERS(HttpMethod.GET, "/api/hh/helper/**"),
-    ALL_EVENTS(HttpMethod.GET, "/api/hh/event"),
+    ALL_EVENTS(HttpMethod.GET, "/api/hh/event/**"),
     ALL_ARTICLES(HttpMethod.GET, "/api/hh/article/**"),
     ALL_MULTIMEDIA(HttpMethod.GET, "/api/hh/multimedia/**"),
     ALL_PROFESSIONS(HttpMethod.GET, "/api/hh/profession/**"),
