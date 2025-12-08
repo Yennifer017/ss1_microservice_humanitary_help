@@ -55,7 +55,7 @@ public class CatastropheController {
             })
     @GetMapping()
     @ResponseStatus(HttpStatus.OK)
-    public List<CatastropheDTO> getAll(@PathVariable Integer id) throws NotFoundException {
+    public List<CatastropheDTO> getAll() throws NotFoundException {
         return catastropheService.getAll();
     }
 
