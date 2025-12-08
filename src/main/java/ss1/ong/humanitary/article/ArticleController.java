@@ -71,7 +71,6 @@ public class ArticleController {
             })
     @GetMapping("/byEvent/{eventId}")
     @ResponseStatus(HttpStatus.OK)
-    @PreAuthorize("hasRole('ADMIN')")
     public List<SimpleArticleDTO> getAllByEvent(@PathVariable Integer eventId) {
         return articleService.getALlArticles(eventId);
     }
