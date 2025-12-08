@@ -62,7 +62,11 @@ public enum PublicEndpointsEnum {
     ALL_CATASTROPHES(HttpMethod.GET, "/api/hh/catastrophe/**"),
     ALL_HELPERS(HttpMethod.GET, "/api/hh/helper/**"),
     ALL_EVENTS(HttpMethod.GET, "/api/hh/event/**"),
-    ALL_ARTICLES(HttpMethod.GET, "/api/hh/article/**"),
+
+    ALL_ARTICLES(HttpMethod.GET, "/api/hh/article/all"),
+    ARTICLES_FROM_EVENT(HttpMethod.GET, "/api/hh/article/byEvent/**"),
+    ARTICLES(HttpMethod.GET, "/api/hh/article/**"),
+
     ALL_MULTIMEDIA(HttpMethod.GET, "/api/hh/multimedia/**"),
     ALL_PROFESSIONS(HttpMethod.GET, "/api/hh/profession/**"),
 
