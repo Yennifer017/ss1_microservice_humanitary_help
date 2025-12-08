@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 
 @Value
 public class EventDTO {
+    Integer id;
     String name;
     LocalDateTime limitDate;
     String details;
