@@ -7,3 +7,6 @@ INSERT INTO donation_util (name, description, type, created_at) VALUES
 ('Sangre tipo B-', 'Litros de sangre tipo B negativo', 'BLOOD', NOW()),
 ('Sangre tipo AB+', 'Litros de sangre tipo AB positivo', 'BLOOD', NOW()),
 ('Sangre tipo AB-', 'Litros de sangre tipo AB negativo', 'BLOOD', NOW());
+
+INSERT INTO donation_util(name, description, type, created_at) VALUES
+('Ayuda', 'Ayuda voluntaria en campañas en el extranjero u otros', 'HELP', NOW());

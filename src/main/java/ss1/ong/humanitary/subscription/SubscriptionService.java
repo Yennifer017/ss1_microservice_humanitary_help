@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ss1.ong.humanitary.auth.users.AppUser;
 import ss1.ong.humanitary.auth.users.AppUserService;
+import ss1.ong.humanitary.common.exceptions.DuplicateResourceException;
 import ss1.ong.humanitary.common.exceptions.NotFoundException;
 import ss1.ong.humanitary.event.Event;
 import ss1.ong.humanitary.event.EventService;
@@ -31,6 +32,9 @@ public class SubscriptionService {
 
     public Subscription create(Integer eventId) throws NotFoundException {
         AppUser appUser = appUserService.getProfile();
+        if(subscriptionRepository.findByAppUserIdAndEventId(appUser.getId(), eventId).isPresent()){
+            throw new DuplicateResourceException("El usuario ya esta suscrito a ese evento");
+        }
         Event event = eventService.getEventById(eventId);
         return subscriptionRepository.save(new Subscription(appUser, event));
     }
