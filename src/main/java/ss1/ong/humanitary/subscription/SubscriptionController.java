@@ -70,7 +70,7 @@ public class SubscriptionController {
             })
     @GetMapping("/owned")
     @ResponseStatus(HttpStatus.OK)
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAnyRole('CLIENT', 'JOURNALIST')")
     public List<OwnedSubscriptionDTO> getOwned() throws NotFoundException {
         return this.subscriptionService.getOwned();
     }
@@ -78,15 +78,15 @@ public class SubscriptionController {
     /**
      * Eliminar suscripcion
      **/
-    @Operation(summary = "example",
-            description = "example",
+    @Operation(summary = "Eliminar suscripcion",
+            description = "Eliminar suscripcion",
             responses = {
                     @ApiResponse(responseCode = "200", description = "Exitoso"),
                     @ApiResponse(responseCode = "400", description = "Datos de entrada inválidos")
             })
     @DeleteMapping("/{eventId}")
     @ResponseStatus(HttpStatus.OK)
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAnyRole('CLIENT', 'JOURNALIST')")
     public void deleteById(@PathVariable Integer eventId) throws NotFoundException {
         this.subscriptionService.deleteSubscription(eventId);
     }
