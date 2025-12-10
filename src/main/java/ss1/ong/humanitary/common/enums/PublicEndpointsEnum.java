@@ -70,6 +70,8 @@ public enum PublicEndpointsEnum {
     ALL_MULTIMEDIA(HttpMethod.GET, "/api/hh/multimedia/**"),
     ALL_PROFESSIONS(HttpMethod.GET, "/api/hh/profession/**"),
 
+    PUBLIC_BUYS(HttpMethod.GET, "/api/hh/buy/public/**"),
+
     // Rutas publicas de Activity
     SWAGGER_UI(null, "/api/hh/swagger-ui/**"),
     API_DOCS(null, "/api/hh/v3/api-docs/**"),

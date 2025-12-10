@@ -54,9 +54,8 @@ public class BuyController {
                     @ApiResponse(responseCode = "200", description = "Exitoso"),
                     @ApiResponse(responseCode = "400", description = "Datos de entrada inválidos")
             })
-    @GetMapping("/{helperId}")
+    @GetMapping("/public/{helperId}")
     @ResponseStatus(HttpStatus.OK)
-    @PreAuthorize("hasRole('ADMIN')")
     public List<BuyDTO> getFromHelperId(@PathVariable Integer helperId){
         return buyService.getAllFromHelper(helperId);
     }

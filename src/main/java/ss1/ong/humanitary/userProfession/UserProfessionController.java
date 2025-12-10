@@ -68,8 +68,8 @@ public class UserProfessionController {
     /**
      * Obtiene a todos los usuarios de una profesion especificada
      **/
-    @Operation(summary = "example",
-            description = "example",
+    @Operation(summary = "Obtiene a todos los usuarios de una profesion especificada",
+            description = "Obtiene a todos los usuarios de una profesion especificada",
             responses = {
                     @ApiResponse(responseCode = "200", description = "Exitoso"),
                     @ApiResponse(responseCode = "400", description = "Datos de entrada inválidos")

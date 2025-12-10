@@ -39,7 +39,7 @@ public class MultimediaController {
             })
     @PostMapping(consumes = {"multipart/form-data"})
     @ResponseStatus(HttpStatus.OK)
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("isAuthenticated()")
     public MultimediaDTO create(
             @RequestParam("eventId") Integer eventId,
             @RequestPart("file") MultipartFile file
