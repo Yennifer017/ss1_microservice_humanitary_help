@@ -27,8 +27,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class DonationUtilController {
 
-    private DonationUtilService donationUtilService;
-    private DonationUtilMapper donationUtilMapper;
+    private final DonationUtilService donationUtilService;
+    private final DonationUtilMapper donationUtilMapper;
 
     /**
      * Crea un objeto para una donacion
