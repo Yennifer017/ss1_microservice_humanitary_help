@@ -28,7 +28,7 @@ import ss1.ong.humanitary.event.Event;
 @EqualsAndHashCode(callSuper = true)
 public class Multimedia extends Auditor {
 
-    @Column(nullable = true, length = 50)
+    @Column(nullable = true, length = 150)
     private String url;
 
     @ManyToOne
