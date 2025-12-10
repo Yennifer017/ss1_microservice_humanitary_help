@@ -6,5 +6,6 @@ import ss1.ong.humanitary.donationUtil.dto.response.DonationUtilDTO;
 @Value
 public class RequirementDTO {
     Integer id;
+    Integer quantity;
     DonationUtilDTO donationUtil;
 }
