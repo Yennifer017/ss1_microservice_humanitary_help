@@ -10,7 +10,7 @@ public class CreateRequirementDTO {
     Integer eventId;
 
     @NotNull(message = "Debe especificarse una donacion")
-    Integer DonationUtilId;
+    Integer donationUtilId;
 
     @NotNull(message = "Debe especificarse una cantidad")
     @Positive(message = "La cantidad debe ser positiva")
