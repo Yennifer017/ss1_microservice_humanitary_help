@@ -37,6 +37,7 @@ public class RequirementService {
         Requirement requirement = new Requirement();
         Event event = eventService.getEventById(createRequirementDTO.getEventId());
         DonationUtil donationUtil = donationUtilService.findById(createRequirementDTO.getDonationUtilId());
+	requirement.setQuantity(createRequirementDTO.getQuantity());
         requirement.setEvent(event);
         requirement.setDonationUtil(donationUtil);
         return requirementRepository.save(requirement);
