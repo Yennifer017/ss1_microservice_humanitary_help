@@ -49,16 +49,6 @@ import org.springframework.util.AntPathMatcher;
 @AllArgsConstructor
 public enum PublicEndpointsEnum {
 
-    /*AUTH_RECOVERY_PASSWORD(HttpMethod.POST, "/api/user/password-recovery"),
-    AUTH_LOGIN(HttpMethod.POST, "/api/login"),
-    AUTH_LOGIN_MFA(HttpMethod.POST, "/api/login/mfa"),
-    SEND_CODE(HttpMethod.POST, "/api/send-code"),
-    SIGN_IN(HttpMethod.POST, "/api/user/register"),
-    SIGN_IN_CLIENT(HttpMethod.POST, "/api/client/register"),
-
-    SEARCH_FOR_DELIVERY(HttpMethod.GET, "/api/delivery/find/**"),
-    */
-
     ALL_CATASTROPHES(HttpMethod.GET, "/api/hh/catastrophe/**"),
     ALL_HELPERS(HttpMethod.GET, "/api/hh/helper/**"),
     ALL_EVENTS(HttpMethod.GET, "/api/hh/event/**"),
@@ -66,6 +56,8 @@ public enum PublicEndpointsEnum {
     ALL_ARTICLES(HttpMethod.GET, "/api/hh/article/all"),
     ARTICLES_FROM_EVENT(HttpMethod.GET, "/api/hh/article/byEvent/**"),
     ARTICLES(HttpMethod.GET, "/api/hh/article/**"),
+
+    PUBLIC_DONATIONS(HttpMethod.GET, "/api/hh/donation/public/**"),
 
     ALL_MULTIMEDIA(HttpMethod.GET, "/api/hh/multimedia/**"),
     ALL_PROFESSIONS(HttpMethod.GET, "/api/hh/profession/**"),

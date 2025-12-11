@@ -4,6 +4,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -37,12 +38,12 @@ public class DonationController {
                     @ApiResponse(responseCode = "200", description = "Exito"),
                     @ApiResponse(responseCode = "400", description = "Datos de entrada inválidos")
             })
-    @PostMapping()
+    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @ResponseStatus(HttpStatus.OK)
     @PreAuthorize("hasAnyRole('CLIENT', 'JOURNALIST')")
     public DonationDTO register(
             @RequestPart("file") MultipartFile file,
-            @RequestParam("text") CreateDonationDTO createDonationDTO
+            @RequestPart("text") CreateDonationDTO createDonationDTO
     ) throws NotFoundException, IOException {
         return donationMapper.donationToDonationDto(donationService.register(createDonationDTO, file));
     }
@@ -72,9 +73,8 @@ public class DonationController {
                     @ApiResponse(responseCode = "200", description = "Exitoso"),
                     @ApiResponse(responseCode = "400", description = "Datos de entrada inválidos")
             })
-    @GetMapping("/{eventId}")
+    @GetMapping("/public/{eventId}")
     @ResponseStatus(HttpStatus.OK)
-    @PreAuthorize("hasRole('ADMIN')")
     public List<DonationDTO> getFromEventId(@PathVariable Integer eventId) throws NotFoundException {
         return this.donationService.getByEventId(eventId);
     }
