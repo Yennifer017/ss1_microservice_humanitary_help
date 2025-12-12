@@ -75,7 +75,7 @@ public class MailService {
         helper.setSubject(subject);
 
         // define el remitente usando el nombre de la aplicación y el correo configurado
-        helper.setFrom("SIE <" + appProperties.getMailFrom() + ">");
+        helper.setFrom("SS1 ONG <" + appProperties.getMailFrom() + ">");
 
         // retorna el mensaje construido
         return mimeMessage;
