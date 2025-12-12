@@ -36,7 +36,7 @@ public class UserProfession extends Auditor {
     @JoinColumn
     private Profession profession;
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false, length = 250)
     private String degreeUrl;
 
 }
