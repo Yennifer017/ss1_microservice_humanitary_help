@@ -60,7 +60,7 @@ public class UserProfessionController {
             })
     @GetMapping()
     @ResponseStatus(HttpStatus.OK)
-    @PreAuthorize("hasRole('CLIENT', 'JOURNALIST')")
+    @PreAuthorize("hasAnyRole('CLIENT', 'JOURNALIST')")
     public List<OwnedProfessionDTO> getAllOwned() throws NotFoundException {
         return this.userProfessionService.getOwned();
     }
