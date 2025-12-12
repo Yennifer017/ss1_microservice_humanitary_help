@@ -26,8 +26,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UserProfessionController {
 
-    private UserProfessionMapper userProfessionMapper;
-    private UserProfessionService userProfessionService;
+    private final UserProfessionMapper userProfessionMapper;
+    private final UserProfessionService userProfessionService;
 
     /**
      * Registra una profesion de un usuario
