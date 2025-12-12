@@ -31,32 +31,25 @@ public class MailService {
     private static final String THYMELEAF_VARIABLE_CODE = "code";
     private static final String THYMELEAF_VARIABLE_NAME_USER = "name";
 
-    private static final String THYMELEAF_TEMPLATE_EMAIL_VERIFICATION = "EmailVerification";
+    private static final String THYMELEAF_NOTIFICATION = "NotificationTemp";
 
-    public void sendVerifyEmail(String participantEmail, String userFullName, Integer userId, String code) {
+    public void sendNotificationEmail(String recipientEmail, String title, String message) {
         Context context = new Context();
 
-        // establece las variables que se usarán en la plantilla de correo
-        context.setVariable(THYMELEAF_VARIABLE_CODE, code);
-        context.setVariable(THYMELEAF_VARIABLE_NAME_USER, userFullName);
+        context.setVariable("title", title);
+        context.setVariable("message", message);
 
-        // genera el contenido html del correo usando la plantilla thymeleaf
-        String html = templateEngine.process(THYMELEAF_TEMPLATE_EMAIL_VERIFICATION, context);
+        String html = templateEngine.process(THYMELEAF_NOTIFICATION, context);
 
         try {
-            // construye el mensaje mime con el asunto y contenido html
-            MimeMessage mimeMessage = buildMimeMessage(participantEmail, "Valida tu correo electrónico", html);
-
-            // envía el correo
+            MimeMessage mimeMessage = buildMimeMessage(recipientEmail, title, html);
             mailSender.send(mimeMessage);
-        } catch (MessagingException e) {
-            // registra un error si falla la construcción o envío del mensaje
-            log.error("Error al enviar el correo de registro aprobado a {}", participantEmail, e);
-        } catch (MailException e) {
-            // captura excepciones relacionadas con el envío del correo, pero no hace nada
-            log.error("Error al enviar el correo de registro aprobado a {}", participantEmail, e);
+
+        } catch (MessagingException | MailException e) {
+            log.error("Error al enviar el correo de notificación a {}", recipientEmail, e);
         }
     }
+
 
     /**
      * Construye un mensaje MIME listo para ser enviado por correo electrónico.

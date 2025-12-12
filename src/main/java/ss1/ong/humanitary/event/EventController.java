@@ -9,6 +9,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import ss1.ong.humanitary.common.exceptions.NotFoundException;
 import ss1.ong.humanitary.event.dto.request.CreateEventDTO;
+import ss1.ong.humanitary.event.dto.request.UpdateEventDTO;
 import ss1.ong.humanitary.event.dto.response.EventDTO;
 
 import java.util.List;
@@ -41,6 +42,22 @@ public class EventController {
     @PreAuthorize("hasRole('ADMIN')")
     public EventDTO create(@RequestBody @Valid CreateEventDTO createEventDTO) throws NotFoundException {
         return eventMapper.eventToEventDto(eventService.createEvent(createEventDTO));
+    }
+
+    /**
+     * Actualiza un evento
+     */
+    @Operation(summary = "Actualiza un evento",
+            description = "Actualiza un evento y notifica a los suscriptores de su actualizacion",
+            responses = {
+                    @ApiResponse(responseCode = "200", description = "Exito"),
+                    @ApiResponse(responseCode = "400", description = "Datos de entrada inválidos")
+            })
+    @PutMapping()
+    @ResponseStatus(HttpStatus.OK)
+    @PreAuthorize("hasRole('ADMIN')")
+    public EventDTO update(@RequestBody @Valid UpdateEventDTO updateEventDTO) throws NotFoundException {
+        return eventMapper.eventToEventDto(eventService.updateEvent(updateEventDTO));
     }
 
     /**
